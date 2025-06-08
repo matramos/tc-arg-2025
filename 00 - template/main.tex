@@ -1,0 +1,214 @@
+\documentclass{beamer}
+%\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+%\usepackage{lmodern}  % Use the Latin Modern font family
+
+\usepackage{latexsym,amsmath,xcolor,bm, amssymb, color, tikz, graphicx, amsthm, mathtools}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{hyperref}
+\usepackage{float}     
+\usepackage{CJKutf8}
+\usepackage{multicol}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\Tr}{Tr}
+
+\makeatletter
+\DeclareRobustCommand\onedot{\futurelet\@let@token\@onedot}
+\def\@onedot{\ifx\@let@token.\else.\null\fi\xspace}
+\def\eg{\emph{e.g}\onedot} 
+\def\Eg{\emph{E.g}\onedot}
+\def\ie{\emph{i.e}\onedot} 
+\def\Ie{\emph{I.e}\onedot}
+\def\cf{\emph{c.f}\onedot} 
+\def\Cf{\emph{C.f}\onedot}
+\def\etc{\emph{etc}\onedot} 
+\def\vs{\emph{vs}\onedot}
+\def\wrt{w.r.t\onedot} 
+\def\dof{d.o.f\onedot}
+\def\etal{\emph{et al}\onedot}
+\makeatother
+
+
+\usetheme{Madrid}
+\useinnertheme{circles}
+
+
+\definecolor{ColorUNR}{HTML}{0b2755} 
+\usecolortheme[named=ColorUNR]{structure}
+%\usecolortheme[named=ColorUNR]{exampleblock}
+
+%\setbeamertemplate{blocks}[rounded][shadow=true]
+%\setbeamercolor{block body}{fg=black,bg=white}
+
+
+
+%------------------------------------------------------------
+%This block of code defines the information to appear in the
+%Title page
+\title %optional
+{Título de la Clase}
+
+\subtitle{(Subtitulo de la Clase)}
+
+%\subtitle{with applications to persuation and lie production}
+% \author % (optional)
+% {Author Name}
+
+\author[Matias Ramos]{Matias Ramos}
+
+\institute[]{Universidad Tecnológica Nacional - Facultad Regional Santa Fe}
+\date[TC 2025]{Training Camp 2025}
+\titlegraphic{\includegraphics[clip,height=2cm,keepaspectratio]{logos/tcarg.jpeg}}
+
+%End of title page configuration block
+%------------------------------------------------------------
+
+
+%------------------------------------------------------------
+%The next block of commands puts the table of contents at the 
+%beginning of each section and highlights the current section:
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Outline}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+%------------------------------------------------------------
+
+
+\begin{document}
+
+
+%The next statement creates the title page.
+\frame{\titlepage}
+
+
+%------------------------------------------------------------
+% Frame de Sponsors, me parece mejor ponerlo al principio
+% Antes del índice/contenido
+
+\begin{frame}{Gracias Sponsors!}
+    \begin{columns}[t]
+        \column{0.5\textwidth}
+        \centering
+        Organizador\\
+        \vspace{0.5cm}
+        \includegraphics[width=1\textwidth,keepaspectratio]{logos/aapc.png}
+        \includegraphics[width=1\textwidth,keepaspectratio]{logos/utn_santafe.png}
+        \column{0.5\textwidth}
+        \centering
+        Diamond\\
+        \includegraphics[width=1\textwidth,keepaspectratio]{logos/GTSlogo.jpeg}
+    \end{columns}
+    \begin{columns}[t]
+        \column{1.0\textwidth}
+        \centering
+        Gold\\
+        \begin{minipage}{0.5\textwidth}
+            \centering
+            \includegraphics[width=0.4\textwidth,keepaspectratio]{logos/neuralsoft.png}
+        \end{minipage}%
+        \begin{minipage}{0.5\textwidth}
+            \centering
+            % \includegraphics[width=0.4\textwidth,keepaspectratio]{logos/Acc_Logo_Black_Purple_RGB.png}
+        \end{minipage}
+    \end{columns}
+\end{frame}
+
+
+%---------------------------------------------------------
+%This block of code is for the table of contents after
+%the title page
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents
+\end{frame}
+%---------------------------------------------------------
+
+
+\section{Part1}
+
+\begin{frame}{Topic1}
+Hello world! 
+\begin{itemize}
+    \item Introduction 
+    \item Task Formulation
+\end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}{Topic2}
+\begin{itemize}
+    \item $a \in $  $\mathcal{A}=$\{alice, bob, ...\}
+\end{itemize}
+
+
+\begin{example}[Ejemplo]
+    $u_m$ can be:
+    \begin{equation}
+        \begin{CJK*}{UTF8}{gbsn}
+        u_m = \begin{cases}
+            \textrm{苹果}, & if~~a == \textrm{``apple''} \\
+            \textrm{我不想回答你的问题}, & if~~a == \textrm{``refuse''} \\
+            \vdots & \vdots
+        \end{cases}
+        \nonumber
+        \end{CJK*}
+    \end{equation}
+\end{example}
+\end{frame}
+
+\begin{frame}{Formalization}
+
+\begin{definition}[Def1]
+A $t-1$ turn dialogue:
+\begin{equation}
+    H^t := \{(u_u^{1}, pg^{1}, u_m^{1}), \cdots, (u_u^{t-1}, pg^{t-1}, u_m^{t-1})\},
+\end{equation}
+where $pg$ is the observation .
+\end{definition}
+
+\end{frame}
+
+\section{Part2}
+
+
+\begin{frame}[fragile]{Forward Algorithm}
+\begin{algorithm}[H]%[!ht]
+\small
+\caption{Forward algorithm.}
+\label{alg:algorithm}
+\begin{algorithmic}%[1]
+
+\REQUIRE Transition model $\mathcal{T}$, value score model $\mathcal{F}$.
+\STATE Compute $\bm{\alpha}^1$.
+\FOR{$i = 2$ to $t-1$}
+    \STATE Obtain $v_+^i$ using the model in \ref{fig:forward}.
+    \IF{$i == t-1$}
+        \STATE Compute $V_+(a)$ using $\bm{\alpha}^{t-1}$.
+    \ENDIF
+\ENDFOR
+\RETURN $V_+(a)$ as a function.
+
+\end{algorithmic}
+\end{algorithm}
+\end{frame}
+
+
+\begin{frame}{Consultas}
+Pueden consultarme durante esta semana, o me pueden enviar un mail a:
+        \begin{itemize}
+            \item \href{mailto:mramos@frsf.utn.edu.ar}{mramos@frsf.utn.edu.ar}
+        \end{itemize}
+        %\bibliography{ref}
+\end{frame}
+
+
+\end{document}
