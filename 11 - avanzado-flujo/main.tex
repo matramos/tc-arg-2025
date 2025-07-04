@@ -452,7 +452,7 @@
 
 \end{frame}
 
-\section{ Trucos varios }
+\section{Trucos varios }
 
 \begin{frame}{Capacidad en los nodos}
     Si necesitamos que los nodos $v \in V$ tengan una capacidad $c(v)$, podemos separar cada nodo $v$ en $v_{in}, v_{out}$ y :
@@ -462,6 +462,30 @@
     \end{itemize}
 \end{frame}
     
-\subsection{ Aristas con flujo mínimo }
+% \subsection{ Aristas con flujo mínimo }
+
+\begin{frame}{Aristas con flujo mínimo}
+    Sea $G = (V,E)$ un grafo dirigido con nodos sumidero $S$ y $T$, y funciones de flujo mínimo y máximo $c,d: E \to \mathbb{N}$.
+    Queremos:
+    \begin{enumerate}
+        \item Decidir si es posible asignar un flujo $f: E \to \textbf{N}$ tal que $c(e) \leq f(e) \leq d(e) \forall e \in E$ y $\forall v \in V - \{S,T\}, \sum_{u: (u,v) \in E} f(u,v) = \sum_{w: (v,w) \in E} f(v,w)$.
+        \item Si es posible, encontrar un flujo $f$ que cumpla lo anterior y maximice el valor $|f|$.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{Aristas con flujo mínimo - Solución}
+    Para resolver este problema:
+    \begin{enumerate}
+        \item Construimos un grafo $G' = (V', E')$ donde $V' = V \cup \{S', T'\}$, nuevos nodos fuente y sumidero.
+        \pause
+        \item Para cada $(u,v) \in E$, agregamos a $E'$ una arista $(u,v)$ con capacidad $d(u,v) - c(u,v)$, arista $(S',v)$ y $(u,T)$, ambas con capacidad $c(u,v)$.
+        \pause
+        \item Agregamos aristas $(S',S)$ y $(T,T')$ con capacidad $\infty$.
+        \item Calculamos el un flujo máximo $f'$ de $S'$ a $T'$. Si hay aristas salientes de $S'$ (excepto $(S',S)$) que no esten saturadas, el flujo no es satisfasible.
+        \pause 
+        \item Si el flujo es satisfasible, $f(u,v) = c(u,v) + f'(u,v)$ para cada $(u,v) \in E$.
+        \item El flujo $f$ cumple las condiciones del problema y maximiza el valor $|f|$.
+    \end{enumerate}
+\end{frame}
 
 \end{document}
