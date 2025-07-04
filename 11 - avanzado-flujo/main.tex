@@ -321,6 +321,7 @@
 \end{frame}
 
 \section{Partición de DAG en Caminos}
+    \subsection{Partición en Cadenas}
     \begin{frame}{Partición de un DAG en caminos}
         
         \begin{definition}
@@ -346,13 +347,121 @@
             \item Las aristas que se usan en los caminos de la partición son las aristas del matching.
             \item Para saber donde empiezan los caminos, tomamos los $v$ tales que $v_{in}$ no está matcheado.
         \end{enumerate}    
-        
-
     \end{frame}
+\subsection{Teorema de Dilworth}
+    \begin{frame}{Teorema de Dilworth}
+        \begin{definition}{Anticadena}
+            Sea un DAG $G = (V,E)$, una \textbf{anticadena} es $V' \subseteq V$ tal que no hay dos nodos $u,v \in V'$ tales que $u$ puede alcanzar a $v$ en $G$.
+        \end{definition}
+        
+        \pause
+
+        \begin{Theorem}[Dilworth]
+            Sea un DAG $G = (V,E)$ y $C$ su mínima covertura en cáminos \textbf{no disjuntos}, el tamaño de la máxima anticadena $A$ es $|C|$.
+        \end{Theorem}
+        
+    \end{frame}
+
+    \begin{frame}{Teorema de Dilworth: Reconstrucción}
+        Para reconstruir la máxima anticadena $A$ de un DAG $G = (V,E)$, podemos:
+        \begin{enumerate}
+            \item Construimos la clausura transitiva de $G$, $G' = (V,E')$.
+            \pause
+            \item Definimos el grafo bipartito $B = (V_B,E_B)$, donde $V_B = \{v_{in}, v_{out} : v \in V\}$ y $E_B = \{(u_{out}, v_{in}) : (u,v) \in E'\}$.
+            \pause
+            \item Calculamos un MVC $M$ de $B$.
+            \pause
+            \item Una máxima anticadena $A$ de $G$ es el conjunto de nodos $v \in V$ tales que $v_{in} \not \in M \wedge v_{out} \not \in M$
+        \end{enumerate}
+    \end{frame}
+
 \section{Problemas de Maquinas y Tareas}
 
+\subsection{Problema de Asignación}
+
+\begin{frame}{Problema de Asignación}
+    Sea un conjunto $T$ de tareas y un conjunto $M$ de máquinas necesarias para realizar la tarea:
+    \pause
+    \begin{itemize}
+        \item Para comprar la máquina $m \in M$ necesitamos pagar un costo $c(m)$.
+        \pause
+        \item Para realizar la tarea $t \in T$ necesitamos un conjunto $M_t \subseteq M$ de máquinas.
+        \pause
+        \item Puedo utilizar una misma máquina para realizar cualquier cantidad de tareas, pero no puedo realizar una tarea si no tengo todas las máquinas necesarias.
+        \pause 
+        \item Si realizo la tarea $t$ obtengo un beneficio $b(t)$.
+    \end{itemize}
+    \pause 
+    Quiero elegir un subconjunto de máquinas $M'$ a comprar y uno de tareas $T'$ a realizar, de tal forma que maximicemos el beneficio total neto.
+
+    $$
+    \max_{M' \subseteq M, T' \subseteq T, T'\text{ es posible dado }M'} \left( \sum_{t \in T'} b(t) - \sum_{m \in M'} c(m) \right)
+    $$
+\end{frame}
+
+\begin{frame}{Reducción al problema de corte mínimo}
+    Para resolver este problema, lo podemos reducir al problema de corte mínimo de la siguiente manera:
+    \pause 
+    \begin{enumerate}
+        
+        \item Asumo que ya me pagaron todos las tareas. Entonces, no realizar la tarea $t$ tiene un costo $b(t)$.
+        
+        \pause 
+
+        \item Defino un grafo $G = (V,E)$
+        \item Agrego un nodo fuente $S$ y un nodo sumidero $T$.
+        \item Para cada máquina $m \in M$, agrego una arista $(S,m)$ con capacidad $c(m)$.
+        \item Para cada tarea $t \in T$, agrego una arista $(t,T)$ con capacidad $b(t)$.
+
+        \pause
+        \item Para cada tarea $t \in T$ y cada máquina $m \in M_t$, agrego una arista $(m,t)$ con capacidad $\infty$.
+        
+        \pause
+        \item Calculo el corte mínimo entre $S$ y $T$ en $G$.
+        \item El máximo beneficio alcanzable es $\sum_{t \in T} b(t)$ menos el costo del corte mínimo. Esto representa la necesidad de la maquina $m$ para la tarea $t$.
+        
+        \pause
+        \item Si la arista $(S,m)$ forma parte del corte, compro la máquina $m$.
+        \item Si la arista $(t,T)$ forma parte del corte, entonces no realizo la tarea $t$.
+    \end{enumerate}    
+\end{frame}
+
+\subsection{Generalización}
+
+\begin{frame}{Generalización del problema de asignación}
+    Sea $G = (V,E)$ un grafo dirigido y una función de valor $w:E \to \mathbb{Z}$, queremos elegir un subconjunto de nodos $V' \subseteq V$ tal que:
+    \begin{enumerate}
+        \item $\forall (u,v) \in E, v \in V' \implies u \in V'$.
+        \item Maximiza $\sum_{v \in V'} w(v)$
+    \end{enumerate}
+
+    \pause
+    Para resolver este problema construimos un grafo $G' = (V', E')$:
+    \begin{enumerate}
+        \item $V' = V \cup \{S, T\}$, donde $S$ es el nodo fuente y $T$ es el nodo sumidero.
+        \pause
+        \item Para cada nodo $v \in V$, si $w(v) < 0$, agrego una arista $(S,v)$ con capacidad $-w(v)$, y si $w(v) > 0$, agrego una arista $(v,T)$ con capacidad $w(v)$.
+        \pause
+        \item Para cada arista $(u,v) \in E$, agrego una arista $(u,v) \in E'$ con capacidad $\infty$.
+        \pause
+        \item Calculo el corte mínimo entre $S$ y $T$ en $G'$.
+        \pause
+        \item El conjunto de nodos $V'$ alcanzables desde $S$ en la red residual.
+        \item El valor de $V'$ es la suma de los $w(v)$ positivos menos el corte minimo.
+    \end{enumerate}
+
+\end{frame}
+
 \section{ Trucos varios }
-    \subsection{ Capacidad en los nodos }
-    \subsection{ Aristas con flujo mínimo }
+
+\begin{frame}{Capacidad en los nodos}
+    Si necesitamos que los nodos $v \in V$ tengan una capacidad $c(v)$, podemos separar cada nodo $v$ en $v_{in}, v_{out}$ y :
+    \begin{itemize}
+        \item Reemplazar cada arista $(u,v) \in E$ por la arista $(u_{out}, v_{in})$ con capacidad $c(u,v)$.
+        \item Agregar para cada nodo $v$ una arista $(v_{in}, v_{out})$ con capacidad $c(v)$. 
+    \end{itemize}
+\end{frame}
     
+\subsection{ Aristas con flujo mínimo }
+
 \end{document}
