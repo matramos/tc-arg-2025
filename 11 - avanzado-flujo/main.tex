@@ -10,6 +10,7 @@
 \usepackage{float}     
 \usepackage{CJKutf8}
 \usepackage{multicol}
+\usepackage{svg}
 
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
@@ -325,6 +326,13 @@
         \includegraphics[width=0.6\textwidth]{imgs/mvc.png}
     \end{center}
 \end{frame}
+
+\begin{frame}{Minimum Edge Cover}
+    La aristas rojas son las pertenecientes al matching máximo y las azules las que hay que agregar
+    \begin{center}
+        \includegraphics[width=0.6\textwidth]{imgs/mec.png}
+    \end{center}
+\end{frame}
 \subsection{ Matching Ponderado Bipartito Máximo }
 
 \begin{frame}{Matching Máximo Bipartito Ponderado}
@@ -495,20 +503,34 @@
     \end{enumerate}
 \end{frame}
 
-\begin{frame}{Aristas con flujo mínimo - Solución}
+\begin{frame}{Aristas con flujo mínimo - Solución (I)}
     Para resolver este problema:
     \begin{enumerate}
         \item Construimos un grafo $G' = (V', E')$ donde $V' = V \cup \{S', T'\}$, nuevos nodos fuente y sumidero.
         \pause
         \item Para cada $(u,v) \in E$, agregamos a $E'$ una arista $(u,v)$ con capacidad $d(u,v) - c(u,v)$, arista $(S',v)$ y $(u,T')$, ambas con capacidad $c(u,v)$.
         \pause
-        \item Agregamos aristas $(S',S)$ y $(T,T')$ con capacidad $\infty$.
-        \item Calculamos el un flujo máximo $f'$ de $S'$ a $T'$. Si hay aristas salientes de $S'$ (excepto $(S',S)$) que no esten saturadas, el flujo no es satisfasible.
-        \pause 
-        \item Si el flujo es satisfasible, $f(u,v) = c(u,v) + f'(u,v)$ para cada $(u,v) \in E$.
-        \item El flujo $f$ cumple las condiciones del problema y maximiza el valor $|f|$.
+        \item Agrego una arista $(T,S)$ con capacidad $\infty$
+        %  \item Agregamos aristas $(S',S)$ y $(T,T')$ con capacidad $\infty$.
+        \item Calculamos el un flujo máximo $f'$ de $S'$ a $T'$. Si hay aristas salientes de $S'$ o entrantes a $T'$ que no esten saturadas, el flujo no es satisfacible.
+        
     \end{enumerate}
 \end{frame}
+
+\begin{frame}{Aristas con flujo mínimo - Solución (II)}
+    Si el flujo es satisfacible, podemos recuperar el flujo $f$ de la siguiente forma, metiendonos dentro del algoritmo de flujo máximo:
+    \begin{enumerate}
+        \item Aplicamos el algoritmo de flujo máximo a $G$.
+        \pause 
+        \item Para la arista $(u,v) \in E$, la capacidad será $d(u,v)$ y para su arista complementaria su capacidad será $-c(u,v)$ en vez de 0.
+        \pause
+        \item En vez de empezar con el flujo neutro, empezamos con el flujo $f'$. Es decir, $f(e) = f'(e)$ y $f(e') = -f'(e)$ para cada $e \in E$.
+        \pause
+        \item Ejecutamos el resto del algoritmo de flujo máximo de $S$ a $T$ de forma normal. El flujo resultante será valido y máximo.
+    \end{enumerate}
+\end{frame}
+
+
 
 \begin{frame}{Multi Source/ Multi Sink}
     Si quiero tener multiples fuentes $S_1, S_2, \dots S_n$ y multiples sumideros $T_1, T_2, \dots, T_m$, lo que hago es tener fuente y sumidero fantasmas $S', T'$ y agregar aristas $(S',S_i)$ y $(T_i,T')$ con capacidad infinita.
@@ -519,8 +541,37 @@
     Si quiero vincular a una fuente especifica con un sumidero especifico (es decir, pensar que mando distintos fluidos por la red) no puedo utilizar los algoritmos comunes de flujo y debo recurrir a Programación Líneal (que si queremos valores enteros se vuelve NP-Hard, pero para valores reales se puede resolver en tiempo polinomial)
 \end{frame}
 
-\begin{frame}{Cierre}
-    Gracias por ver!!!
+\begin{frame}{Multi Source/ Multi Sink (II)}
+    \begin{center}
+        \includegraphics[width=0.6\textwidth]{imgs/multi-st.png}
+    \end{center}
 \end{frame}
+
+\begin{frame}{Costos convexos}
+    En Min Cost Max Flow, si se cumple que:
+    \begin{enumerate}
+        \item El costo $w$ de una arista no es líneal en la cantidad de flujo. Es decir, $w(e) \neq k(e) * f(e)$.
+        \item El costo $w$ es una función convexa de $f(e)$, es decir, $w(e,x) - w(e,x-1) \geq w(e,x-1) - w(e,x-2) \forall x > 1$.
+    \end{enumerate}
+
+    Podemos resolver el problema reemplazando la arista $e$ por $c(e)$ aristas de capacidad 1 donde $w(e_i,1) = w(e,i) - w(e,i-1)$.
+    Es decir, $w(e_i,1)$ es el costo marginal de enviar la i-ésima unidad de flujo por la arista $e$. Como los costos marginales son crecientes, el algoritmo utilizará primero las aristas correspondientes a las primeras unidades de flujo.
+\end{frame}
+
+\begin{frame}{Costos convexos (II)}
+    \begin{center}
+    \includegraphics[width=0.8\textwidth]{imgs/convex-cost-flow.png}
+    \end{center}
+\end{frame}
+
+
+\begin{frame}{Cierre}
+    \begin{center}
+        \vspace{2cm}
+        {\Huge \textbf{¡Gracias por ver!}}
+        \vspace{2cm}
+    \end{center}
+\end{frame}
+
 
 \end{document}
