@@ -294,7 +294,7 @@
 
         \item El problema de matching máximo consiste en encontrar un matching $M$ de tamaño (cantidad de aristas) máximo.
 
-        \item En el caso general se puede resolver con el  \href{https://en.wikipedia.org/wiki/Blossom_algorithm}[algoritmo de Blossom] en $O(|E|*|V|^2)$ y en $O(|E|*|V|^{1/2})$ con el algoritmo de Micali y Vazirani, pero este es demasiado complicado para usarse en programación competitiva.
+        \item En el caso general se puede resolver con el  \href{https://en.wikipedia.org/wiki/Blossom_algorithm}{Algoritmo de Blossom} en $O(|E|*|V|^2)$ y en $O(|E|*|V|^{1/2})$ con el algoritmo de Micali y Vazirani, pero este es demasiado complicado para usarse en programación competitiva.
 
         \item Para el caso particular de grafos bipartitos, puede resolver en $O(|E|*\sqrt{|V|})$ utilizando flujo máximo.
         \end{itemize}
@@ -326,7 +326,7 @@
         \pause
         \item Teorema de Konig: $|M|$ es el tamaño del MVC de $G$.
         \pause
-        \item El MVC está compuesto por los nodos de $V_2$ alcanzables desde $S$ y los nodos de $V_1$ que alcanzan a $T$ en la red residual (sin pasar por aristas saturadas).
+        \item El MVC está compuesto por los nodos de $V_2$ alcanzables desde $S$ y los nodos de $V_1$ que alcanzan a $T$ en el resultado de eliminar las aristas de un min cut del grafo original.
         \pause
         \item En general, $V - MVC = MIS$, donde $MIS$ es el Maximum Independent Set.
         \pause 
