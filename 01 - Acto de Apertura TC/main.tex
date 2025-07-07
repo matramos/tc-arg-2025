@@ -37,7 +37,7 @@
 \useinnertheme{circles}
 
 
-\definecolor{ColorUNR}{HTML}{990077} 
+\definecolor{ColorUNR}{HTML}{0b2755} 
 \usecolortheme[named=ColorUNR]{structure}
 %\usecolortheme[named=ColorUNR]{exampleblock}
 
@@ -110,21 +110,38 @@
     \end{columns}
 \end{frame}
 
-% --- Sponsors Frame 2: Gold & Oro ---
+% --- Sponsors Frame 2: Platino, Gold & Oro ---
 
 \begin{frame}{Gracias Sponsors!}
-    \begin{columns}[t]
+    % Platino at the top, full width
+    \centering
+    Platino\\
+    \includegraphics[width=0.6\textwidth,keepaspectratio]{logos/folder.png}
+    
+    \vfill
+    
+    % Gold and Oro at the bottom in two columns
+    \begin{columns}[b]
         % Gold column
         \column{0.5\textwidth}
         \centering
         Gold\\
-        \includegraphics[width=0.5\textwidth,keepaspectratio]{logos/neuralsoft.png}
+        \includegraphics[width=0.8\textwidth,keepaspectratio]{logos/neuralsoft.png}
         % Oro column
         \column{0.5\textwidth}
         \centering
         Oro\\
-        \includegraphics[width=0.5\textwidth,keepaspectratio]{logos/jerarquicos.jpg}
+        \includegraphics[width=0.8\textwidth,keepaspectratio]{logos/jerarquicos.jpg}
     \end{columns}
+\end{frame}
+
+% --- Sponsors Frame 3: Aliado ---
+
+\begin{frame}{Gracias Sponsors!}
+    \centering
+    Aliado\\
+    \vspace{1cm}
+    \includegraphics[width=0.6\textwidth,keepaspectratio]{logos/santa_fe_logo_v2.jpg}
 \end{frame}
 
 
@@ -169,45 +186,13 @@ Entrenamos para prepararnos para las competencias de ICPC.
     \end{tikzpicture}
 \end{frame}
 
-\section{Cronograma}
-
-\begin{frame}{Día Inaugural}
-    Usted está aquí
-    \centering
-    \includegraphics[clip,height=7cm,keepaspectratio]{img/00_inaugu.png}
-\end{frame}
-
-\begin{frame}{Almuerzo}
-    \centering
-    El almuerzo es de {\bf 12 a 13 hs}, el horario se respeta siempre.
-    
-    {\bf No lleguen tarde.}
-\end{frame}
-
-\begin{frame}{Día GTS}
-    \centering
-    \includegraphics[clip,height=4.5cm,keepaspectratio]{img/01_gts.png}
-\end{frame}
-
-\begin{frame}{Días normales}
-    \centering
-    \includegraphics[clip,height=7cm,keepaspectratio]{img/02_normal.png}
-\end{frame}
-
-\begin{frame}{Días Sponsors Gold}
-    \centering
-    \includegraphics[clip,height=7cm,keepaspectratio]{img/03_gold.png}
-\end{frame}
-
-\begin{frame}{Día de Cierre}
-    \centering
-    \includegraphics[clip,height=7cm,keepaspectratio]{img/04_cierre.png}
-\end{frame}
-
-\begin{frame}{Aulas y espacios}
-    \centering
-    \includegraphics[clip,height=8.4cm,keepaspectratio]{img/mapa_00.jpeg}
-    \includegraphics[clip,height=8.4cm,keepaspectratio]{img/mapa_01.jpeg}
+\section{Datos del TC}
+\begin{frame}{Datos}
+    \begin{itemize}
+        \item En estas dos semanas van a resolver entre 35-70 problemas.
+        \item Desde el 2010, el 95\% de los finalistas argentinos, participaron del TC Argentina.
+        \item De los últimos 5 equipos Latam Champions, 4 participaron del TC Argentina.
+    \end{itemize}
 \end{frame}
 
 \section{Un poco de historia del TC}
@@ -243,71 +228,137 @@ Entrenamos para prepararnos para las competencias de ICPC.
     \end{itemize}
 \end{frame}
 
-\section{Datos del TC}
-\begin{frame}{Datos}
-    \begin{itemize}
-        \item En estas dos semanas van a resolver entre 35-70 problemas.
-        \item Desde el 2010, el 95\% de los finalistas argentinos, participaron del TC Argentina.
-        \item De los últimos 5 equipos Latam Champions, 4 participaron del TC Argentina.
-    \end{itemize}
-\end{frame}
-
 \section{Universidad Tecnológica Nacional - FRSF}
-\begin{frame}{UTN FRSF en ICPC}
-    \begin{columns}[t]
-        \column{0.5\textwidth}
-        \centering
-        2015\\
-        \includegraphics[width=1\textwidth]{img/2015_marruecos.jpg}
-        \column{0.5\textwidth}
-        \centering
-        2016\\
-        \includegraphics[width=1\textwidth]{img/2016_thailand.jpg}
-    \end{columns}
-\end{frame}
 
-\begin{frame}{UTN FRSF en ICPC}
-    \begin{columns}[t]
-        \column{0.5\textwidth}
-        \centering
-        2017\\
-        \includegraphics[width=1\textwidth]{img/2017_usa.jpg}
-        \column{0.5\textwidth}
-        \centering
-        2018\\
-        \includegraphics[width=1\textwidth]{img/2018_china.jpeg}
-    \end{columns}
-\end{frame}
-
-\begin{frame}{UTN FRSF en ICPC}
-    \begin{columns}[t]
-        \column{0.5\textwidth}
-        \centering
-        2019\\
-        \includegraphics[width=1\textwidth]{img/2019_porto.jpg}
-        \column{0.5\textwidth}
-        \centering
-        2023\\
-        \includegraphics[width=1\textwidth]{img/2023_egipt.jpg}
-    \end{columns}
-\end{frame}
-
-\begin{frame}{Palabras}
-    \begin{columns}[t]
-        \column{0.5\textwidth}
-        \centering
-        \includegraphics[width=1\textwidth]{logos/aapc.png}
-        \column{0.5\textwidth}
-        \centering
-        \includegraphics[width=1\textwidth]{logos/utn_santafe.png}
-    \end{columns}
-\end{frame}
-
-\section{GTS - Sponsor Diamond Plus}
-    
-\begin{frame}{GTS}
+\begin{frame}{Universidad Tecnológica Nacional}
     \centering
-    \includegraphics[height=8cm,keepaspectratio]{logos/GTSlogo.jpeg}
+    \includegraphics[width=0.8\textwidth]{img/utn_00.png}
+\end{frame}
+
+\begin{frame}{UTN FRSF en ICPC}
+    \begin{columns}[t]
+        \column{0.5\textwidth}
+        \centering
+        2019 - Porto WF\\
+        \includegraphics[width=1\textwidth]{img/utn_wf_01.jpg}
+        \column{0.5\textwidth}
+        \centering
+        2019 - Porto WF\\
+        \includegraphics[width=1\textwidth]{img/utn_wf_02.jpg}
+    \end{columns}
+\end{frame}
+
+
+\begin{frame}{UTN FRSF en ICPC}
+    \begin{columns}[t]
+        \column{0.5\textwidth}
+        \centering
+        2022 - Egypto WF\\
+        \includegraphics[width=1\textwidth]{img/utn_wf_03.jpg}
+        \column{0.5\textwidth}
+        \centering
+        2022 - Egypto WF\\
+        \includegraphics[width=1\textwidth]{img/utn_wf_04.jpg}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{UTN FRSF en ICPC}
+    \centering
+    2024 - PDA Guadalajara\\
+    \includegraphics[width=0.8\textwidth]{img/utn_pda_01.png}
+\end{frame}
+
+\begin{frame}{UTN FRSF en ICPC}
+    \begin{columns}[t]
+        \column{0.5\textwidth}
+        \centering
+        2024 - Kazajstan WF\\
+        \includegraphics[width=1\textwidth]{img/utn_wf_05.jpg}
+        \column{0.5\textwidth}
+        \centering
+        2024 - Kazajstan WF\\
+        \includegraphics[width=1\textwidth]{img/utn_wf_06.jpg}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{UTN FRSF en ICPC}
+    \centering
+    2025 - PDA Bahia\\
+    \includegraphics[width=0.8\textwidth]{img/utn_pda_02.png}
+\end{frame}
+
+\section{Palabras}
+
+\begin{frame}{Universidad Tecnológica Nacional - FRSF}
+    \centering
+    \includegraphics[width=0.8\textwidth]{logos/utn_santafe.png}
+    
+    \vspace{0.5cm}
+    
+    Milagros Gutierrez - Directora del Departamento de Ingenieria en Sistemas de Información
+\end{frame}
+
+\begin{frame}{Gobierno de Santa Fe}
+    \centering
+    \includegraphics[width=0.8\textwidth]{logos/santa_fe_logo_v2.jpg}
+    
+    \vspace{0.5cm}
+    
+    Erica Hynes - Secretaria de Ciencia Tecnología e Innovación
+\end{frame}
+
+\section{Cronograma}
+
+\begin{frame}{Día Inaugural}
+    Usted está aquí
+    \centering
+    \includegraphics[clip,height=7cm,keepaspectratio]{img/crono_01.png}
+\end{frame}
+
+\begin{frame}{Almuerzo}
+    \centering
+    El almuerzo es de {\bf 12 a 13:30 hs}, el horario se respeta siempre.
+    
+    {\bf No lleguen tarde.}
+    
+    \vspace{0.5cm}
+    
+    Puede llegar antes. Seamos ordenados que el espacio en cantina es limitado. Se pueden usar las mesas en el hall de entrada.
+    
+    {\bf *Seamos limpios*}
+\end{frame}
+
+\begin{frame}{Día GTS}
+    \centering
+    \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{img/crono_02.png}
+\end{frame}
+
+\begin{frame}{Días normales}
+    \centering
+    \includegraphics[clip,height=7cm,keepaspectratio]{img/crono_03.png}
+\end{frame}
+
+\begin{frame}{Días Sponsors Gold}
+    \centering
+    \includegraphics[clip,height=7cm,keepaspectratio]{img/crono_04.png}
+\end{frame}
+
+\begin{frame}{Día de Cierre}
+    \centering
+    \includegraphics[clip,height=7cm,keepaspectratio]{img/crono_05.png}
+\end{frame}
+
+\begin{frame}{Aulas y espacios}
+    \centering
+    {\bf Aulas 21 y 22}
+    
+    \vspace{1cm}
+    
+    Para simulaciones:
+    \begin{itemize}
+        \item Laboratorios 1 y 4
+        \item Se pueden utilizar las aulas 21 y 22 con notebooks personales
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{Dudas}
