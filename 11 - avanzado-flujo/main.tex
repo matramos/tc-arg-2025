@@ -271,7 +271,7 @@
         \end{itemize}
     \end{frame}
     
-    \pause
+    
 
     \begin{frame}{Matching Máximo Bipartito como problema de flujo máximo}
         Sea un grafo bipartito $G = (U \cup V, E)$, donde $U$ y $V$ son los conjuntos de nodos. Definimos el grafo de flujo máximo $G' = (V', E')$ de la siguiente manera:
@@ -300,6 +300,9 @@
         \item El MVC está compuesto por los nodos de $V_2$ alcanzables desde $S$ y los nodos de $V_1$ que alcanzan a $T$ en la red residual (sin pasar por aristas saturadas).
         \pause
         \item En general, $V - MVC = MIS$, donde $MIS$ es el Maximum Independent Set.
+        \pause 
+        \item En general, puedo construir un Minimum Edge Cover (MEC) utilizando las aristas del Matching Máximo y agregando una arista cualquiera incidente en cada nodo no cubierto por le matching.
+        \item $|MEC| = |V| - |M|$.
     \end{itemize}
 \end{frame}
     
@@ -333,6 +336,8 @@
         \end{definition}
         
         También podemos buscar una partición no necesariamente disjunta. Esta va a ser equivalente a una partición en caminos disjuntos de la clausura transitiva de $G$, y es así como la vamos a calcular.
+
+        Expresar $V$ como unión de caminos no necesariamente disjuntos también se llama una covertura. 
 
         El problema consiste en buscar una partición en caminos de tamaño mínimo, es decir, con la mínima cantidad de caminos.
     \end{frame}
@@ -482,7 +487,7 @@
     \begin{enumerate}
         \item Construimos un grafo $G' = (V', E')$ donde $V' = V \cup \{S', T'\}$, nuevos nodos fuente y sumidero.
         \pause
-        \item Para cada $(u,v) \in E$, agregamos a $E'$ una arista $(u,v)$ con capacidad $d(u,v) - c(u,v)$, arista $(S',v)$ y $(u,T)$, ambas con capacidad $c(u,v)$.
+        \item Para cada $(u,v) \in E$, agregamos a $E'$ una arista $(u,v)$ con capacidad $d(u,v) - c(u,v)$, arista $(S',v)$ y $(u,T')$, ambas con capacidad $c(u,v)$.
         \pause
         \item Agregamos aristas $(S',S)$ y $(T,T')$ con capacidad $\infty$.
         \item Calculamos el un flujo máximo $f'$ de $S'$ a $T'$. Si hay aristas salientes de $S'$ (excepto $(S',S)$) que no esten saturadas, el flujo no es satisfasible.
@@ -490,6 +495,19 @@
         \item Si el flujo es satisfasible, $f(u,v) = c(u,v) + f'(u,v)$ para cada $(u,v) \in E$.
         \item El flujo $f$ cumple las condiciones del problema y maximiza el valor $|f|$.
     \end{enumerate}
+\end{frame}
+
+\begin{frame}{Multi Source/ Multi Sink}
+    Si quiero tener multiples fuentes $S_1, S_2, \dots S_n$ y multiples sumideros $T_1, T_2, \dots, T_m$, lo que hago es tener fuente y sumidero fantasmas $S', T'$ y agregar aristas $(S',S_i)$ y $(T_i,T')$ con capacidad infinita.
+
+    \pause
+    \vspace{2em}
+
+    Si quiero vincular a una fuente especifica con un sumidero especifico (es decir, pensar que mando distintos fluidos por la red) no puedo utilizar los algoritmos comunes de flujo y debo recurrir a Programación Líneal (que si queremos valores enteros se vuelve NP-Hard, pero para valores reales se puede resolver en tiempo polinomial)
+\end{frame}
+
+\begin{frame}{Cierre}
+    Gracias por ver!!!
 \end{frame}
 
 \end{document}
