@@ -11,6 +11,11 @@
 \usepackage{CJKutf8}
 \usepackage{multicol}
 
+% Add pgf-pie for pie charts
+
+% Only add if not present
+\usepackage{pgf-pie}
+
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
 \DeclareMathOperator{\sign}{sign}
@@ -306,43 +311,32 @@
 \end{frame}
 
 \begin{frame}{Análisis de Submissions}
-\begin{center}
+
+% Pie charts for Lenguajes Utilizados and Respuestas del Juez
 
 \begin{columns}[t]
 \column{0.5\textwidth}
 \textbf{Lenguajes Utilizados:}
 
-\vspace{0.1cm}
+\vspace{0.2cm}
 
-\small
-\begin{itemize}
-\item \textbf{C++23:} 4,944 (37.8\%)
-\item \textbf{C++20:} 4,412 (33.7\%)
-\item \textbf{C++17:} 3,142 (24.0\%)
-\item \textbf{Python:} 464 (3.6\%)
-\item \textbf{Otros:} 114 (0.9\%)
-\end{itemize}
+\begin{tikzpicture}
+\pie[text=legend, radius=1.5, sum=auto, after number=\%]
+  {37.8/C++23, 33.7/C++20, 24.0/C++17, 3.6/Python, 0.9/Otros}
+\end{tikzpicture}
 
 \column{0.5\textwidth}
 \textbf{Respuestas del Juez:}
 
-\vspace{0.1cm}
+\vspace{0.2cm}
 
-\small
-\begin{itemize}
-\item \textbf{Accepted:} 4,641 (35.5\%)
-\item \textbf{Wrong Answer:} 6,155 (47.1\%)
-\item \textbf{Time Limit:} 1,199 (9.2\%)
-\item \textbf{Runtime Error:} 545 (4.2\%)
-\item \textbf{Compilation:} 291 (2.2\%)
-\item \textbf{Memory Limit:} 150 (1.1\%)
-\end{itemize}
+\begin{tikzpicture}
+\pie[text=legend, radius=1.5, sum=auto, after number=\%]
+  {35.5/Accepted, 47.1/Wrong Answer, 9.2/Time Limit, 4.2/Runtime Error, 2.2/Compilation, 1.1/Memory Limit}
+\end{tikzpicture}
 \end{columns}
 
-\vspace{0.3cm}
 
-\textbf{¡95.5\% de submissions en C++!}
-\end{center}
 \end{frame}
 
 \begin{frame}{Estadísticas Adicionales}
@@ -380,9 +374,7 @@
 \end{itemize}
 \end{columns}
 
-\vspace{0.3cm}
 
-\textbf{¡Excelente participación y dedicación!}
 \end{center}
 \end{frame}
 
@@ -407,10 +399,6 @@
 \end{itemize}
 
 \vspace{0.7cm}
-
-\textbf{¡Una demostración increíble de dedicación y pasión por la programación competitiva!}
-
-\vspace{0.3cm}
 
 \textbf{¡Gracias por hacer del Training Camp 2025 un éxito rotundo!}
 \end{center}
@@ -462,23 +450,16 @@
 \section{y que hago con todo lo que aprendi?}
 
 \begin{frame}{y que hago con todo lo que aprendi?}
-\begin{center}
-\Large
-¡Aplica todo lo que aprendiste!
+    \begin{center}
+        \includegraphics[width=0.45\textwidth,keepaspectratio]{img/qr-code-aapc.png}
 
-\vspace{1cm}
-
-\begin{itemize}
-\item Participa en competencias de programación
-\item Practica en plataformas online
-\item Comparte conocimiento con otros
-\item Sigue aprendiendo y mejorando
-\end{itemize}
-
-\vspace{1cm}
-
-¡El conocimiento se multiplica cuando se comparte!
-\end{center}
+        \vspace{0.5cm}
+        {\small
+        \textbf{¡Hacete socio/a de la AAPC!}\\
+        Apoyá la programación competitiva en Argentina.\\
+        \href{https://icpc.com.ar/socios/}{https://icpc.com.ar/socios/}
+        }
+    \end{center}
 \end{frame}
 
 \begin{frame}{Maratona Feminina de Programação (MFP) - Información General}
@@ -651,8 +632,6 @@ Solo necesitás conexión a internet
 
 \begin{frame}{Programadores de América 2026}
 \begin{center}
-\Large
-\textbf{Programadores de América 2026}
 
 \vspace{0.2cm}
 
@@ -661,26 +640,7 @@ Solo necesitás conexión a internet
 
 \vspace{0.2cm}
 
-\begin{columns}[t]
-\column{0.5\textwidth}
-\centering
-\textbf{Pontificia Universidad}\\
-\textbf{Católica de Chile}
-
-\vspace{0.3cm}
-
-\textbf{Universidad organizadora}
-
-\column{0.5\textwidth}
-\centering
-\textbf{Universidad Técnica}\\
-\textbf{Federico Santa María}
-
-\vspace{0.3cm}
-
-\textbf{Universidad co-organizadora}
-
-\end{columns}
+\includegraphics[width=0.5\textwidth,keepaspectratio]{img/pda_chile.png}
 
 \vspace{0.3cm}
 
@@ -703,28 +663,67 @@ Solo necesitás conexión a internet
 
 \section{Gracias a todos}
 
-\begin{frame}{Gracias a todos}
-\begin{center}
-\Large
-¡Gracias a todos por hacer posible el Training Camp 2025!
+\begin{frame}{Gracias Disertantes}
+    \begin{itemize}
+        \item Federico Quijada
+        \item Juan Pablo Cabaña
+        \item Mariano Feresin
+        \item Facundo Gutierrez
+        \item Agustín Santiago Gutiérrez
+        \item Mateo Carranza Velez
+        \item Federico Bersano
+        \item Lautaro Lasorsa
+        \item Franco De Rico
+        \item Ivo Pajor
+        \item Carlos Miguel Soto
+        \item Sebastián Mestre
+    \end{itemize}
+\end{frame}
 
-\vspace{1cm}
+% Add a frame for Gracias Setters with colorized handles
+\begin{frame}{Gracias Setters}
+    \begin{itemize}
+        \item {\color{purple} CodigoL}
+        \item {\color{orange} MateoCV}
+        \item {\color{orange} elsantodel90}
+        \item {\color{orange} lsantire}
+        \item {\color{orange} Heibor}
+        \item {\color{orange} MarcosK}
+        \item {\color{cyan} Aristides}
+    \end{itemize}
+\end{frame}
 
-\begin{itemize}
-\item A los participantes por su entusiasmo y dedicación
-\item A los sponsors por su apoyo incondicional
-\item A los organizadores por su trabajo incansable
-\item A la comunidad por su colaboración
-\end{itemize}
+% Add a frame for Gracias Voluntarios
+\begin{frame}{Gracias Voluntarios}
+    \begin{center}
+        Vicky C, Vicky P, Eli, Fran, Bauti y Felipe.
 
-\vspace{1cm}
+        \vspace{0.5cm}
+        Hacedores del coffee-break y ayuda para que todo salga bien.
 
-¡Sin ustedes esto no hubiera sido posible!
+        \vspace{0.7cm}
+        \includegraphics[width=0.5\textwidth,keepaspectratio,trim=0cm 10cm 0cm 10cm,clip]{img/voluntarios.jpeg}
+    \end{center}
+\end{frame}
 
-\vspace{1cm}
+% Add a frame for Gracias UTN-FRSF
+\begin{frame}{Gracias UTN-FRSF}
+    \begin{center}
+        \includegraphics[width=1.05\textwidth,keepaspectratio]{logos/utn_santafe.png}
 
-¡Hasta la próxima edición!
-\end{center}
+        \vspace{0.5cm}
+        Equipo de Soporte, Mantenimiento, Limpieza, etc.
+    \end{center}
+\end{frame}
+
+% Add a frame for Gracias a ustedes
+\begin{frame}{Gracias a ustedes}
+    \begin{center}
+        \includegraphics[width=0.7\textwidth,keepaspectratio]{img/evento-gts.JPG}
+
+        \vspace{0.5cm}
+        nos vemos en TC 2026?
+    \end{center}
 \end{frame}
 
 \end{document}
