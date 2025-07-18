@@ -148,21 +148,6 @@
 
 \section{Gracias por venir}
 
-\begin{frame}{Gracias por venir}
-\begin{center}
-\Large
-¡Muchas gracias por participar en el Training Camp 2025!
-
-\vspace{1cm}
-
-Esperamos que hayan disfrutado de esta experiencia y que hayan aprendido mucho.
-
-\vspace{1cm}
-
-¡Nos vemos en la próxima edición!
-\end{center}
-\end{frame}
-
 \begin{frame}{Participantes por País}
 \begin{center}
 \Large
@@ -197,11 +182,11 @@ Esperamos que hayan disfrutado de esta experiencia y que hayan aprendido mucho.
 \Large
 \textbf{8 países representados}
 
-\vspace{0.5cm}
+\vspace{0.3cm}
 
 % --- Dots Only: Geographically Accurate and All Visible ---
 
-\begin{tikzpicture}[scale=1.0]
+\begin{tikzpicture}[scale=0.9]
   % Argentina
   \fill[blue,opacity=0.7] (3.2,1.1) circle (0.25); % 117
   \node[left] at (2.9,1.1) {\textbf{Argentina} (117)};
@@ -228,16 +213,14 @@ Esperamos que hayan disfrutado de esta experiencia y que hayan aprendido mucho.
   \node[right] at (4.2,3.2) {Brasil (1)};
 \end{tikzpicture}
 
-\vspace{0.5cm}
+\vspace{0.3cm}
 
 \textbf{América Latina unida por la programación competitiva}
 
-\vspace{0.3cm}
+\vspace{0.2cm}
 
 \normalsize
 ¡Cada país aportó su talento y entusiasmo!
-
-\vspace{0.2cm}
 
 \textbf{Argentina lidera con el 70\% de los participantes}
 \end{center}
@@ -246,22 +229,190 @@ Esperamos que hayan disfrutado de esta experiencia y que hayan aprendido mucho.
 
 \section{Entrenaron una banda}
 
-\begin{frame}{Entrenaron una banda}
+\begin{frame}{Estadísticas del Training Camp}
 \begin{center}
 \Large
-¡Felicitaciones a todos los participantes!
+\textbf{Grupo:} Training Camp Argentina 2025
 
-\vspace{1cm}
+\vspace{0.3cm}
 
-Han completado exitosamente el Training Camp 2025
+\normalsize
+\begin{itemize}
+\item \textbf{Total de Contests:} 16
+\item \textbf{Total de Problemas (incluyendo duplicados):} 200
+\item \textbf{Problemas Únicos:} 148
+\item \textbf{Promedio por Contest:} 12.50 problemas
+\end{itemize}
 
-\vspace{1cm}
+\end{center}
+\end{frame}
 
-Cada uno de ustedes ha demostrado dedicación, esfuerzo y pasión por la programación competitiva.
+\begin{frame}{Submissions por Día - Gráfico}
+\begin{center}
 
-\vspace{1cm}
+\vspace{0.1cm}
 
-¡Son una banda increíble!
+\begin{tikzpicture}[scale=0.7]
+% Define coordinates for submissions (Inicial/Avanzado)
+% Day 1: Inicial-1 (370), Avanzado-1 (763)
+% Day 2: Inicial-2 (863), Avanzado-2 (1295)
+% Day 3: Inicial-3 (661), Avanzado-3 (1208)
+% Day 4: Inicial-4 (815), Avanzado-4 (1762)
+% Day 5: Inicial-5 (578), Avanzado-5 (993)
+% Day 6: Inicial-6 (559), Avanzado-6 (1056)
+% Day 7: Inicial-7 (384), Avanzado-7 (700)
+% Day 8: Inicial-8 (388), Avanzado-8 (681)
+
+% Y-axis (submissions) - goes up to 1800 with jumps of 200
+\draw[->,very thick] (0,0) -- (0,9) node[above] {\textbf{Submissions}};
+\foreach \y/\label in {0/0, 1/200, 2/400, 3/600, 4/800, 5/1000, 6/1200, 7/1400, 8/1600, 9/1800} {
+    \draw[thick] (0,\y) -- (-0.15,\y) node[left] {\textbf{\label}};
+}
+
+% X-axis (days) - simplified to just show day numbers
+\draw[->,very thick] (0,0) -- (9,0) node[right] {\textbf{Días}};
+\foreach \x in {1,2,3,4,5,6,7,8} {
+    \draw[thick] (\x,0) -- (\x,-0.15) node[below] {\textbf{\x}};
+}
+
+% Bars for Inicial submissions (blue) - using original data values scaled to fit
+\fill[blue!80] (0.6,0) rectangle (0.9,1.85);  % 370
+\fill[blue!80] (1.6,0) rectangle (1.9,4.315); % 863
+\fill[blue!80] (2.6,0) rectangle (2.9,3.305); % 661
+\fill[blue!80] (3.6,0) rectangle (3.9,4.075); % 815
+\fill[blue!80] (4.6,0) rectangle (4.9,2.89);  % 578
+\fill[blue!80] (5.6,0) rectangle (5.9,2.795); % 559
+\fill[blue!80] (6.6,0) rectangle (6.9,1.92);  % 384
+\fill[blue!80] (7.6,0) rectangle (7.9,1.94);  % 388
+
+% Bars for Avanzado submissions (red) - using original data values scaled to fit
+\fill[red!80] (1.1,0) rectangle (1.4,3.815);  % 763
+\fill[red!80] (2.1,0) rectangle (2.4,6.475);  % 1295
+\fill[red!80] (3.1,0) rectangle (3.4,6.04);   % 1208
+\fill[red!80] (4.1,0) rectangle (4.4,8.81);   % 1762
+\fill[red!80] (5.1,0) rectangle (5.4,4.965);  % 993
+\fill[red!80] (6.1,0) rectangle (6.4,5.28);   % 1056
+\fill[red!80] (7.1,0) rectangle (7.4,3.5);    % 700
+\fill[red!80] (8.1,0) rectangle (8.4,3.405);  % 681
+
+% Legend - with colored rectangles and text labels
+\fill[blue!80] (9.5,8.3) rectangle (10.2,8.7);
+\node[right] at (10.3,8.5) {\textbf{Inicial}};
+\fill[red!80] (9.5,7.3) rectangle (10.2,7.7);
+\node[right] at (10.3,7.5) {\textbf{Avanzado}};
+
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+\begin{frame}{Análisis de Submissions}
+\begin{center}
+
+\begin{columns}[t]
+\column{0.5\textwidth}
+\textbf{Lenguajes Utilizados:}
+
+\vspace{0.1cm}
+
+\small
+\begin{itemize}
+\item \textbf{C++23:} 4,944 (37.8\%)
+\item \textbf{C++20:} 4,412 (33.7\%)
+\item \textbf{C++17:} 3,142 (24.0\%)
+\item \textbf{Python:} 464 (3.6\%)
+\item \textbf{Otros:} 114 (0.9\%)
+\end{itemize}
+
+\column{0.5\textwidth}
+\textbf{Respuestas del Juez:}
+
+\vspace{0.1cm}
+
+\small
+\begin{itemize}
+\item \textbf{Accepted:} 4,641 (35.5\%)
+\item \textbf{Wrong Answer:} 6,155 (47.1\%)
+\item \textbf{Time Limit:} 1,199 (9.2\%)
+\item \textbf{Runtime Error:} 545 (4.2\%)
+\item \textbf{Compilation:} 291 (2.2\%)
+\item \textbf{Memory Limit:} 150 (1.1\%)
+\end{itemize}
+\end{columns}
+
+\vspace{0.3cm}
+
+\textbf{¡95.5\% de submissions en C++!}
+\end{center}
+\end{frame}
+
+\begin{frame}{Estadísticas Adicionales}
+\begin{center}
+\Large
+\textbf{Más Información de Submissions}
+
+\vspace{0.3cm}
+
+\begin{columns}[t]
+\column{0.5\textwidth}
+\textbf{Participación por Contest:}
+
+\vspace{0.1cm}
+
+\small
+\begin{itemize}
+\item \textbf{Más Participantes:} Avanzado-4 (136)
+\item \textbf{Más Submissions:} Avanzado-4 (1,762)
+\item \textbf{Promedio Submissions:} 817 por contest
+\item \textbf{Participantes Únicos:} 262 total
+\end{itemize}
+
+\column{0.5\textwidth}
+\textbf{Métricas de Rendimiento:}
+
+\vspace{0.1cm}
+
+\small
+\begin{itemize}
+\item \textbf{Submissions/Participante:} 49.9 promedio
+\item \textbf{Mejor Contest Inicial:} Inicial-8 (51.3\% accepted)
+\item \textbf{Contest Más Difícil:} Avanzado-4 (25.8\% accepted)
+\item \textbf{Problemas Intentados:} 11-14 por contest
+\end{itemize}
+\end{columns}
+
+\vspace{0.3cm}
+
+\textbf{¡Excelente participación y dedicación!}
+\end{center}
+\end{frame}
+
+\begin{frame}{Total de Submissions}
+\begin{center}
+\Huge
+\textbf{¡13,076 SUBMISSIONS!}
+
+\vspace{0.7cm}
+
+\Large
+\textbf{En 16 contests durante 8 días}
+
+\vspace{0.3cm}
+
+\normalsize
+\begin{itemize}
+\item \textbf{262 participantes únicos}
+\item \textbf{8 países representados}
+\item \textbf{200 problemas disponibles}
+\item \textbf{148 problemas únicos}
+\end{itemize}
+
+\vspace{0.7cm}
+
+\textbf{¡Una demostración increíble de dedicación y pasión por la programación competitiva!}
+
+\vspace{0.3cm}
+
+\textbf{¡Gracias por hacer del Training Camp 2025 un éxito rotundo!}
 \end{center}
 \end{frame}
 
@@ -306,24 +457,6 @@ Cada uno de ustedes ha demostrado dedicación, esfuerzo y pasión por la program
 \end{center}
 \end{frame}
 
-\begin{frame}{y ahora... los premios}
-\begin{center}
-\Large
-¡Es momento de reconocer a los mejores!
-
-\vspace{1cm}
-
-Los participantes que se destacaron durante el Training Camp 2025
-
-\vspace{1cm}
-
-Recibirán sus merecidos premios y reconocimientos.
-
-\vspace{1cm}
-
-¡Aplausos para todos los ganadores!
-\end{center}
-\end{frame}
 
 
 \section{y que hago con todo lo que aprendi?}
@@ -388,7 +521,7 @@ Recibirán sus merecidos premios y reconocimientos.
 \Large
 \textbf{¿Por qué participar en MFP?}
 
-\vspace{0.3cm}
+\vspace{0.1cm}
 
 \normalsize
 \begin{itemize}
@@ -399,16 +532,12 @@ Recibirán sus merecidos premios y reconocimientos.
 \item \textbf{Oportunidades:} Puertas abiertas a competencias internacionales
 \end{itemize}
 
-\vspace{0.3cm}
+\vspace{0.1cm}
 
 \textbf{¡Rompe barreras y construye tu futuro en tecnología!}
 
-\vspace{0.2cm}
-
 \normalsize
 \textbf{Próxima edición:} Consulta las fechas en sus redes sociales
-
-\vspace{0.1cm}
 
 \small
 \url{https://www.instagram.com/mfp.sbc}
@@ -419,17 +548,15 @@ Recibirán sus merecidos premios y reconocimientos.
 \begin{center}
 \includegraphics[width=0.2\textwidth,keepaspectratio]{img/tap_logo.png}
 
-\vspace{0.3cm}
+\vspace{0.1cm}
 
 \Large
 \textbf{15º Torneo Argentino de Programación 2025}
 
-\vspace{0.2cm}
-
 \normalsize
 \textbf{Sábado 23 de agosto de 2025}
 
-\vspace{0.2cm}
+\vspace{0.1cm}
 
 \begin{itemize}
 \item \textbf{Competencia:} 5 horas de duración
@@ -439,11 +566,7 @@ Recibirán sus merecidos premios y reconocimientos.
 \item \textbf{Clasificación:} Para ICPC Latinoamérica (Chile 2026)
 \end{itemize}
 
-\vspace{0.2cm}
-
 \textbf{¡Inscripción hasta el 20 de agosto!}
-
-\vspace{0.1cm}
 
 \small
 \url{https://icpc.global/regionals/finder/TAP-2026}
@@ -455,11 +578,12 @@ Recibirán sus merecidos premios y reconocimientos.
 \Large
 \textbf{Sedes de Competencia 2025}
 
-\vspace{0.3cm}
+\vspace{0.2cm}
 
 \normalsize
 \begin{columns}[t]
 \column{0.5\textwidth}
+\small
 \begin{itemize}
 \item \textbf{UNJu} (Jujuy)
 \item \textbf{UNSa} (Nueva Orán, Salta)
@@ -471,6 +595,7 @@ Recibirán sus merecidos premios y reconocimientos.
 \end{itemize}
 
 \column{0.5\textwidth}
+\small
 \begin{itemize}
 \item \textbf{UNLAM} (Bs. As.)
 \item \textbf{UNLP} (Bs. As.)
@@ -480,16 +605,12 @@ Recibirán sus merecidos premios y reconocimientos.
 
 \end{columns}
 
-\vspace{0.3cm}
+\vspace{0.2cm}
 
 \textbf{¡Tu universidad puede ser sede!}
 
-\vspace{0.2cm}
-
 \normalsize
 Solo necesitás conexión a internet
-
-\vspace{0.2cm}
 
 \small
 \url{https://icpc.com.ar/tap}
@@ -500,17 +621,17 @@ Solo necesitás conexión a internet
 \begin{center}
 \includegraphics[width=0.3\textwidth,keepaspectratio]{img/regional_logo.jpg}
 
-\vspace{0.3cm}
+\vspace{0.2cm}
 
 \Large
 \textbf{Regional Sudamérica-Sur 2025}
 
-\vspace{0.2cm}
+\vspace{0.1cm}
 
 \normalsize
 \textbf{8 de noviembre de 2025}
 
-\vspace{0.2cm}
+\vspace{0.1cm}
 
 \begin{itemize}
 \item \textbf{Participantes:} Equipos clasificados del TAP y otros países
@@ -519,11 +640,9 @@ Solo necesitás conexión a internet
 \item \textbf{Premio:} Clasificación a PDA 2026
 \end{itemize}
 
-\vspace{0.2cm}
+\vspace{0.1cm}
 
 \textbf{¡El siguiente paso después del TAP!}
-
-\vspace{0.1cm}
 
 \small
 \url{https://icpc.com.ar/regional-latinoamericana}
@@ -535,12 +654,12 @@ Solo necesitás conexión a internet
 \Large
 \textbf{Programadores de América 2026}
 
-\vspace{0.3cm}
+\vspace{0.2cm}
 
 \normalsize
 \textbf{Santiago de Chile, Marzo 2026}
 
-\vspace{0.3cm}
+\vspace{0.2cm}
 
 \begin{columns}[t]
 \column{0.5\textwidth}
@@ -548,7 +667,7 @@ Solo necesitás conexión a internet
 \textbf{Pontificia Universidad}\\
 \textbf{Católica de Chile}
 
-\vspace{0.5cm}
+\vspace{0.3cm}
 
 \textbf{Universidad organizadora}
 
@@ -557,13 +676,13 @@ Solo necesitás conexión a internet
 \textbf{Universidad Técnica}\\
 \textbf{Federico Santa María}
 
-\vspace{0.5cm}
+\vspace{0.3cm}
 
 \textbf{Universidad co-organizadora}
 
 \end{columns}
 
-\vspace{0.5cm}
+\vspace{0.3cm}
 
 \begin{itemize}
 \item \textbf{Competencia:} Final continental de programación
@@ -572,11 +691,9 @@ Solo necesitás conexión a internet
 \item \textbf{Premio:} Clasificación a la Final Mundial ICPC 2026
 \end{itemize}
 
-\vspace{0.3cm}
+\vspace{0.2cm}
 
 \textbf{¡La meta final de todo programador competitivo!}
-
-\vspace{0.1cm}
 
 \small
 \url{https://icpc.global}
