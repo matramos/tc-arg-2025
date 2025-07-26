@@ -1,0 +1,148 @@
+\documentclass[12pt]{scrartcl}
+\usepackage[a4paper,landscape,left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{setspace,amsmath,amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{calligra}
+\usepackage{tgschola}
+\usepackage{fourier-orns}
+\usepackage{graphicx}
+\usepackage{wallpaper}
+\usepackage[normalem]{ulem}
+\usepackage{charter}
+\usepackage{microtype}
+\usepackage{datetime}
+\usepackage{tikz}
+\usepackage{tcolorbox}
+\hyphenpenalty 100000
+%=============================
+\input Zallman.fd
+\newcommand*\initfamily{\usefont{U}{Zallman}{xl}{n}}
+%=============================
+\usepackage{datatool}
+\DTLloaddb{names}{certificados.csv}
+%=============================
+\def\signature#1#2{\parbox[b]{1.5in}{\smash{#1}\vskip8pt}
+\parbox[t]{3in}{\shortstack{\vrule width 1.2in height 0.4pt\\\small#2}}}
+\def\sigskip{\vskip0.3in plus 0.1in}
+        \def\beginskip{\vskip0.4in plus 0.1in}
+%=============================
+% ICPC Colors
+\definecolor{ColorUNR}{HTML}{0b2755}
+\definecolor{ICPCBlue}{HTML}{1e3a8a}
+\definecolor{ICPCGold}{HTML}{f59e0b}
+\definecolor{ICPCGoldLight}{HTML}{fbbf24}
+\definecolor{blue}{RGB}{0,0,255}
+\definecolor{name}{RGB}{255,0,0}
+\definecolor{bordo}{RGB}{140,20,60}
+%=============================
+\newcounter{certificatenumber}
+\setcounter{certificatenumber}{1}
+%=============================
+% Certificate border command
+\newcommand{\certificateborder}{
+\begin{tikzpicture}[remember picture,overlay]
+% Outer border (closer to edge)
+\draw[ICPCBlue,line width=6pt] ([xshift=20pt,yshift=20pt]current page.south west) rectangle ([xshift=-20pt,yshift=-20pt]current page.north east);
+% Inner border
+\draw[ICPCGold,line width=2pt] ([xshift=30pt,yshift=30pt]current page.south west) rectangle ([xshift=-30pt,yshift=-30pt]current page.north east);
+% Corner decorations
+\draw[ICPCGold,line width=2pt] ([xshift=40pt,yshift=40pt]current page.south west) -- ([xshift=55pt,yshift=40pt]current page.south west);
+\draw[ICPCGold,line width=2pt] ([xshift=40pt,yshift=40pt]current page.south west) -- ([xshift=40pt,yshift=55pt]current page.south west);
+\draw[ICPCGold,line width=2pt] ([xshift=-40pt,yshift=40pt]current page.south east) -- ([xshift=-55pt,yshift=40pt]current page.south east);
+\draw[ICPCGold,line width=2pt] ([xshift=-40pt,yshift=40pt]current page.south east) -- ([xshift=-40pt,yshift=55pt]current page.south east);
+\draw[ICPCGold,line width=2pt] ([xshift=40pt,yshift=-40pt]current page.north west) -- ([xshift=55pt,yshift=-40pt]current page.north west);
+\draw[ICPCGold,line width=2pt] ([xshift=40pt,yshift=-40pt]current page.north west) -- ([xshift=40pt,yshift=-55pt]current page.north west);
+\draw[ICPCGold,line width=2pt] ([xshift=-40pt,yshift=-40pt]current page.north east) -- ([xshift=-55pt,yshift=-40pt]current page.north east);
+\draw[ICPCGold,line width=2pt] ([xshift=-40pt,yshift=-40pt]current page.north east) -- ([xshift=-40pt,yshift=-55pt]current page.north east);
+% Top and bottom decorative lines
+\draw[ICPCGold,line width=1.5pt] ([xshift=60pt]current page.south west) -- ([xshift=-60pt]current page.south east);
+\draw[ICPCGold,line width=1.5pt] ([xshift=60pt]current page.north west) -- ([xshift=-60pt]current page.north east);
+% Side decorative lines
+\draw[ICPCGold,line width=1.5pt] ([yshift=60pt]current page.south west) -- ([yshift=-60pt]current page.north west);
+\draw[ICPCGold,line width=1.5pt] ([yshift=60pt]current page.south east) -- ([yshift=-60pt]current page.north east);
+% Corner circles
+\fill[ICPCGold] ([xshift=50pt,yshift=50pt]current page.south west) circle (3.5pt);
+\fill[ICPCGold] ([xshift=-50pt,yshift=50pt]current page.south east) circle (3.5pt);
+\fill[ICPCGold] ([xshift=50pt,yshift=-50pt]current page.north west) circle (3.5pt);
+\fill[ICPCGold] ([xshift=-50pt,yshift=-50pt]current page.north east) circle (3.5pt);
+\end{tikzpicture}
+}
+%=============================
+\begin{document}
+% landscape removed
+\linespread{1.3}\selectfont
+\pagestyle{empty}
+%=============================
+\DTLforeach{names}{
+\apellido=Apellido, \nombre=Nombre, \pais=País, \universidad=Universidad a la que pertenecen}{
+%=============================
+
+% Certificate border
+\certificateborder
+
+% Header with logos - fixed positions using TikZ
+\begin{tikzpicture}[remember picture, overlay]
+  % AAPC left
+  \node[anchor=north west] at ([xshift=60pt,yshift=-60pt]current page.north west)
+    {\includegraphics[height=0.08\textheight]{img/aapc.png}};
+  % TCARG center
+  \node[anchor=north] at ([yshift=-60pt]current page.north)
+    {\includegraphics[height=0.18\textheight]{img/tcarg.jpeg}};
+  % UTN right
+  \node[anchor=north east] at ([xshift=-60pt,yshift=-60pt]current page.north east)
+    {\includegraphics[height=0.08\textheight]{img/utn_santafe.png}};
+\end{tikzpicture}
+
+% Add more vertical space after logos to move title and text down
+\vskip4em
+
+{\centering
+{\onehalfspacing
+    {\Large\bfseries\color{ICPCBlue}{Training Camp Argentina 2025}}}\\
+    \par}
+
+\vskip2em
+
+
+% Main certificate text
+\vskip2em
+\begin{center}
+\begin{minipage}{0.9\textwidth}
+\sloppy
+\color{ICPCBlue}Se certifica que {\bfseries \large \apellido, \nombre}, \DTLifnullorempty{\universidad}{participante}{estudiante de la \universidad}, \DTLifnullorempty{\pais}{}{de \pais}, participó exitosamente en el {\bfseries Training Camp Argentina 2025}, programa intensivo de entrenamiento en programación competitiva realizado en la Universidad Tecnológica Nacional - Facultad Regional Santa Fe, Argentina, durante el año 2025, entre el 07 y el 18 de Julio, con una duración total de 80 horas académicas.
+\end{minipage}
+\end{center}
+
+\vskip1.5em
+
+% Signature section
+\vskip1em
+\noindent
+{\singlespacing
+\begin{center}
+\begin{tabular}{@{}c c@{}}
+  \begin{minipage}{0.45\textwidth}
+    \centering
+    \includegraphics[height=0.15\textheight]{img/agus.png} \\
+    \signature{}{
+      \color{ICPCBlue}Lic. Agustín Santiago Gutiérrez \\
+      {\footnotesize Presidente de la Asociación \\ Argentina de Programación Competitiva}
+    }
+  \end{minipage} &
+  \begin{minipage}{0.45\textwidth}
+    \centering
+    \includegraphics[height=0.15\textheight]{img/firma_matt} \\
+    \signature{}{
+      \color{ICPCBlue}Matías José Ramos \\
+      {\footnotesize Director del Training Camp Argentina 2025} \\
+      {\footnotesize Universidad Tecnológica Nacional, Facultad Regional Santa Fe}
+    }
+  \end{minipage}
+\end{tabular}
+\end{center}
+}
+\stepcounter{certificatenumber}
+\pagebreak
+}
+\end{document} 
